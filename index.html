@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery Assignment 2</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-dark">
+
+<p id="demo"></p>
+<div class="container">
+
+    <table class="table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+        </thead>
+        <tbody id="tBody">
+        </tbody>
+    </table>
+</div>
+<script>
+  $(document).ready(function(){
+      $.get("https://jsonplaceholder.typicode.com/posts", function(data, status){
+
+      var dropList = document.getElementById('tBody')
+      for (var i=0; i<data.length; i++)
+            {
+            var row=`<tr>
+                        <td>${data[i].userId}</td>
+                        <td>${data[i].id}</td>
+                        <td>${data[i].title}</td>
+                        <td>${data[i].body}</td>
+                      </tr>`
+            dropList.innerHTML += row
+            }
+
+      });
+  });
+</script>
+</body>
+</html>
